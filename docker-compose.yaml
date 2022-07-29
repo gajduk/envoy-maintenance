@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  envoy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: /usr/local/bin/envoy -c /etc/envoy/envoy-config.yaml
+    volumes:
+    - ./runtime:/srv/runtime
+    ports:
+    - 9211:9211
