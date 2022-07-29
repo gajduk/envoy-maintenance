@@ -1,15 +1,7 @@
-access_log:
-  - name: envoy.access_loggers.stdout
-    typed_config:
-      "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
-address:
-  socket_address:
-    address: 0.0.0.0
-    port_value: 8001
 
 static_resources:
   listeners:
-    - api_listener:
+    - address:
         socket_address:
           address: 0.0.0.0
           port_value: 9211
@@ -44,6 +36,6 @@ static_resources:
                       direct_response:
                         status: 555
                         body: 
-                          inline_string: "{\"message\":\"Don't worry everything is fixable....\",\"title\":\"Something went wrong\",\"retry_button\":true}"
+                          filename: "/etc/envoy/direct-response.json"
 
 
